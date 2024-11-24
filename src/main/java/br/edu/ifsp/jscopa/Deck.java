@@ -42,7 +42,6 @@ public class Deck {
     }
 
     public void embaralhar() {
-
         int n = cartas.length;
 
         Random aleatorio = new Random();
@@ -57,7 +56,16 @@ public class Deck {
             cartas[i] = cartaAleatoria;
 
         }
-
     }
 
+    //modulo que compra as quantidades de cartas que escolher
+    public Carta[] comprarCartas(int n) {
+        Carta[] retorno = new Carta[n];
+
+        for (int i = 0; i < n; i++) {
+            retorno[i] = cartas[--qtdCartasDeck];
+        }
+
+        return retorno;
+    }
 }
