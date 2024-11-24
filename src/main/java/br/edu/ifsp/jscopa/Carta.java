@@ -8,7 +8,10 @@ public class Carta {
 
     enum Naipe {
 
-        Paus, Ouros, Copas, Espadas;
+        Paus,
+        Ouros,
+        Copas,
+        Espadas;
 
         private static final Naipe[] naipes = Naipe.values();
 
@@ -21,7 +24,16 @@ public class Carta {
 
     enum Numero {
 
-        A, Dois, Tres, Quatro, Cinco, Seis, Sete, Valete, Dama, Rei;
+        A,
+        Dois,
+        Tres,
+        Quatro,
+        Cinco,
+        Seis,
+        Sete,
+        Valete,
+        Dama,
+        Rei;
 
         private static final Numero[] numeros = Numero.values();
 
