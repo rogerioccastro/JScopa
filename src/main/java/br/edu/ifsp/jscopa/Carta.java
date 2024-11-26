@@ -4,7 +4,10 @@ public class Carta {
 
     enum Naipe {
 
-        Paus, Ouros, Copas, Espadas;
+        PAUS,
+        OUROS,
+        COPAS,
+        ESPADAS;
 
         private static final Naipe[] naipes = Naipe.values();
 
@@ -17,7 +20,16 @@ public class Carta {
 
     enum Numero {
 
-        A, Dois, Tres, Quatro, Cinco, Seis, Sete, Valete, Dama, Rei;
+        A,
+        DOIS,
+        TRES,
+        QUATRO,
+        CINCO,
+        SEIS,
+        SETE,
+        VALETE,
+        DAMA,
+        REI;
 
         private static final Numero[] numeros = Numero.values();
 
@@ -52,9 +64,9 @@ public class Carta {
     }
 
     //metodo return toString
-    public String toString() {
+    public static String toString(Carta carta) {
 
-        return naipe + "_" + numero;
+        return carta.naipe + "_" + carta.numero;
 
     }
 

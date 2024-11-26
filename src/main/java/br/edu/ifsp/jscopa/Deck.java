@@ -9,7 +9,7 @@ public class Deck {
 
     public Deck() {
 
-        cartas = new Carta[108];
+        cartas = new Carta[40];
 
     }
 
