@@ -40,7 +40,9 @@ public class App extends Application {
 
         System.out.println("N: " + Carta.toString(carta1));
 
-        Jogo.testeSubset();
+
+        Jogo jogo = new Jogo();
+        jogo.testeSubset();
 
         launch();
 

@@ -8,63 +8,67 @@ public class Jogo {
     private boolean vezDoPlayer;
 
     private Deck deck;
-    private ArrayList<Carta> maoPlayer;
+    private Jogador jogador1;
+    private Jogador jogador2;
+
+    public ArrayList<Carta> mesa;
 
     public Jogo() {
         deck = new Deck();
+        deck.reset();
         deck.embaralhar();
-        vezDoPlayer = true; //faz o jogador comecar contra a máquina
-        Jogador player = new Jogador(maoPlayer);
+        vezDoPlayer = true; // faz o jogador comecar contra a máquina
+        this.jogador1 = new Jogador();
+        this.jogador2 = new Jogador();
 
-        for (int i = 0; i < 1; i++) {
-            ArrayList<Carta> mao = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(3)));
-            mao.forEach(carta -> {
-                player.comprarCarta(carta);
-            });
-        }
+        mesa = new ArrayList<Carta>();
 
+        ArrayList<Carta> mao1 = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(3)));
+        ArrayList<Carta> mao2 = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(3)));
+        this.mesa = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(4)));
+        mao1.forEach(carta -> {
+            jogador1.comprarCarta(carta);
+        });
+
+        System.out.println();
+        mesa.forEach(carta -> {
+            System.out.println(Carta.toString(carta) + " ");
+        });
     }
 
-    public static void testeSubset(){
-        ArrayList<Carta> teste = new ArrayList<Carta>();
+    public void testeSubset() {
+        Carta cartaSelecionada = jogador1.getMao().get(0);
 
-        teste.add(new Carta(Carta.Naipe.COPAS, Carta.Numero.A));
-        teste.add(new Carta(Carta.Naipe.COPAS, Carta.Numero.DOIS));
-        teste.add(new Carta(Carta.Naipe.COPAS, Carta.Numero.TRES));
-        teste.add(new Carta(Carta.Naipe.COPAS, Carta.Numero.QUATRO));
-        teste.add(new Carta(Carta.Naipe.COPAS, Carta.Numero.CINCO));
-        teste.add(new Carta(Carta.Naipe.COPAS, Carta.Numero.SEIS));
-        teste.add(new Carta(Carta.Naipe.COPAS, Carta.Numero.SETE));
-        teste.add(new Carta(Carta.Naipe.COPAS, Carta.Numero.VALETE));
-        teste.add(new Carta(Carta.Naipe.COPAS, Carta.Numero.DAMA));
-        teste.add(new Carta(Carta.Naipe.COPAS, Carta.Numero.REI));
+        ArrayList<ArrayList<Carta>> result = listarPossiveisJogadas(cartaSelecionada);
 
-        ArrayList<ArrayList<Carta>> result = subsetSum(teste, 15, new ArrayList<Carta>());
-
+        System.out.println("\n");
+        System.out.println("Somas de 15 com: " + Carta.toString(cartaSelecionada));
         result.forEach(subset -> {
             subset.forEach(carta -> {
                 System.out.print(Carta.toString(carta) + " ");
             });
-            System.out.println();
+            System.out.println("");
         });
     }
 
+    // lista todas as possíveis jogadas que somam 15 com a carta selecionada
+    public ArrayList<ArrayList<Carta>> listarPossiveisJogadas(Carta cartaSelecionada) {
+        int n = cartaSelecionada.getInt();
+
+        return subsetSum(mesa, 15 - n, new ArrayList<Carta>());
+    }
+
     public void start(Jogo jogo) {
-        /* TODO:
+        /*
+         * TODO:
          * Modulo do jogo em si.
          * 
          * 
          */
     }
 
-    // lista todas as possíveis jogadas que somam 15 com a carta selecionada
-    public void listarPossiveisJogadas(Carta cartaSelecionada) {
-        //TODO: algoritimo para listar todas as somas de 15 com a carta selecionada
-    }
-
-
     // retorna todas as combinações possíveis de cartas que somam o inteiro passado
-    private static ArrayList<ArrayList<Carta>> subsetSum(ArrayList<Carta> arr, int sum, ArrayList<Carta> subset) {
+    public static ArrayList<ArrayList<Carta>> subsetSum(ArrayList<Carta> arr, int sum, ArrayList<Carta> subset) {
 
         // transforma o array de cartas em um array de inteiros e soma
         int s = subset.stream().mapToInt(Carta::getInt).sum();

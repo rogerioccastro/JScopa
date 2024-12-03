@@ -20,7 +20,7 @@ public class Deck {
         qtdCartasDeck = 0;
 
         // adiciona todas as cartas (de todos os valores (1 a 10) e naipes) no deck  
-        for (int i = 0; i < naipes.length - 1; i++) {
+        for (int i = 0; i < naipes.length; i++) {
 
             Carta.Naipe naipe = naipes[i];
 
@@ -28,7 +28,7 @@ public class Deck {
 
             for (int j = 1; j < 10; j++) {
 
-                cartas[qtdCartasDeck++] = new Carta(naipe, Carta.Numero.getNumero(j));
+                System.out.print(qtdCartasDeck);
                 cartas[qtdCartasDeck++] = new Carta(naipe, Carta.Numero.getNumero(j));
 
             }
@@ -50,7 +50,8 @@ public class Deck {
 
             //pegar um index aleatorio do array ALÉM do index atual
             //trocar o elemento aleatorio pelo elemento atual
-            int valorAleatorio = i + aleatorio.nextInt(n - 1);
+            int valorAleatorio = i + aleatorio.nextInt(n-i);
+            System.out.print(valorAleatorio);
             Carta cartaAleatoria = cartas[valorAleatorio];
             cartas[valorAleatorio] = cartas[i];
             cartas[i] = cartaAleatoria;
