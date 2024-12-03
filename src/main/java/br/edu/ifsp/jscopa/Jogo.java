@@ -54,19 +54,25 @@ public class Jogo {
          */
     }
 
+    // lista todas as possíveis jogadas que somam 15 com a carta selecionada
     public void listarPossiveisJogadas(Carta cartaSelecionada) {
         //TODO: algoritimo para listar todas as somas de 15 com a carta selecionada
     }
 
 
+    // retorna todas as combinações possíveis de cartas que somam o inteiro passado
     private ArrayList<ArrayList<Carta>> subsetSum(ArrayList<Carta> arr, int sum, ArrayList<Carta> subset) {
+
+        // transforma o array de cartas em um array de inteiros e soma
         int s = subset.stream().mapToInt(Carta::getInt).sum();
         ArrayList<ArrayList<Carta>> result = new ArrayList<ArrayList<Carta>>();
 
+        // adicionar ao resultado se a soma for igual ao valor passado
         if (s == sum) {
             result.add(subset);
         }
 
+        // se a soma for maior que o valor passado, não tem necessidade de checar mais
         if (s > sum) {
             return result;
         }
