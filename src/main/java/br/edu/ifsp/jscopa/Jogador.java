@@ -29,10 +29,4 @@ public class Jogador {
     public void comprarCarta(Carta carta) {
         mao.add(carta);
     }
-
-    // lista todas as possíveis jogadas que somam 15 com a carta selecionada
-    public ArrayList<ArrayList<Carta>> listarPossiveisJogadas(Carta cartaSelecionada) {
-        int n = cartaSelecionada.getInt();
-    }
-
 }

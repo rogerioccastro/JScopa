@@ -25,15 +25,15 @@ public class Jogo {
 
         ArrayList<Carta> mao1 = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(3)));
         ArrayList<Carta> mao2 = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(3)));
-        this.mesa = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(4)));
+        this.mesa = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(3)));
         mao1.forEach(carta -> {
             jogador1.comprarCarta(carta);
         });
 
-        System.out.println();
         mesa.forEach(carta -> {
-            System.out.println(Carta.toString(carta) + " ");
+            System.out.print(Carta.toString(carta) + " ");
         });
+
     }
 
     public void testeSubset() {
