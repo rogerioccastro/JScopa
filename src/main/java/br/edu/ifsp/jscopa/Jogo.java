@@ -23,6 +23,9 @@ public class Jogo {
             });
         }
 
+    }
+
+    public static void testeSubset(){
         ArrayList<Carta> teste = new ArrayList<Carta>();
 
         teste.add(new Carta(Carta.Naipe.COPAS, Carta.Numero.A));
@@ -40,7 +43,7 @@ public class Jogo {
 
         result.forEach(subset -> {
             subset.forEach(carta -> {
-                System.out.print(carta.toString() + " ");
+                System.out.print(Carta.toString(carta) + " ");
             });
             System.out.println();
         });
@@ -61,7 +64,7 @@ public class Jogo {
 
 
     // retorna todas as combinações possíveis de cartas que somam o inteiro passado
-    private ArrayList<ArrayList<Carta>> subsetSum(ArrayList<Carta> arr, int sum, ArrayList<Carta> subset) {
+    private static ArrayList<ArrayList<Carta>> subsetSum(ArrayList<Carta> arr, int sum, ArrayList<Carta> subset) {
 
         // transforma o array de cartas em um array de inteiros e soma
         int s = subset.stream().mapToInt(Carta::getInt).sum();

@@ -27,8 +27,8 @@ public class Carta {
         CINCO,
         SEIS,
         SETE,
-        VALETE,
         DAMA,
+        VALETE,
         REI;
 
         private static final Numero[] numeros = Numero.values();
@@ -56,9 +56,9 @@ public class Carta {
                     return 6;
                 case SETE:
                     return 7;
-                case VALETE:
-                    return 8;
                 case DAMA:
+                    return 8;
+                case VALETE:
                     return 9;
                 case REI:
                     return 10;
