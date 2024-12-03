@@ -6,7 +6,11 @@ import javafx.fxml.FXML;
 public class PrimaryController {
 
     @FXML
-    private void switchToSecondary() throws IOException {
+    private void start() throws IOException {
+
+        Jogo jogo = new Jogo();
+        jogo.testeSubset();
+
         App.setRoot("secondary");
     }
 }
