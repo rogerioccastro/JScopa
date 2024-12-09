@@ -14,9 +14,25 @@ public class Jogador {
     private boolean belo;
     private int[] primeira;
 
+    public int getQtdOuros(){ return qtdOuros; }
+    public int getQtdDeSetes(){ return qtdDeSetes; }
+    public int getQtdEscopas(){ return qtdEscopas; }
+    public boolean getBelo(){ return belo; }
+
+    public int getPrimeira(){ 
+        int soma = 0;
+        for (int i = 0; i < 4; i++){
+            soma += primeira[i];
+        }
+
+        return soma; 
+    }
+
+
     Jogador(ArrayList<Carta> mao) {
         this.mao = mao;
     }
+
 
     Jogador() {
         this.mao = new ArrayList<Carta>();

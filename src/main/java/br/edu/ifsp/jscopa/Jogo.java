@@ -11,6 +11,9 @@ public class Jogo {
     private Jogador jogador1;
     private Jogador jogador2;
 
+    private int pontos1;
+    private int pontos2;
+
     public ArrayList<Carta> mesa;
 
     public Jogo() {
@@ -97,6 +100,42 @@ public class Jogo {
         }
 
         return result;
+    }
+
+    private void computarPontos(Jogador jogador1, Jogador jogador2) {
+        int pontos1 = 0;
+        int pontos2 = 0;
+
+
+        // 1 ponto para o belo
+        if (jogador1.getBelo()) {
+            pontos1++;
+        } else {
+            pontos2++;
+        }
+
+        // 1 ponto para cada escopa
+        pontos1 += jogador1.getQtdEscopas();
+        pontos2 += jogador2.getQtdEscopas();
+
+        if(jogador1.getQtdOuros() > jogador2.getQtdOuros()){
+            pontos1++;
+        } else {
+            pontos2++;
+        }
+
+        if(jogador1.getPrimeira() > jogador2.getPrimeira()){
+            pontos1++;
+        } else {
+            pontos2++;
+        }
+
+        if(jogador1.getQtdDeSetes() == 4) {
+
+        }
+
+        this.pontos1 = pontos1;
+        this.pontos2 = pontos2;
     }
 
 }
