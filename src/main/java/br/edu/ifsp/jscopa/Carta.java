@@ -71,6 +71,7 @@ public class Carta {
 
     private final Naipe naipe;
     private final Numero numero;
+    public boolean escopa;
 
     public Carta(final Naipe naipe, final Numero numero) {
 

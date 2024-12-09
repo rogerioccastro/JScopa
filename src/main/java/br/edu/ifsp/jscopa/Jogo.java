@@ -72,6 +72,7 @@ public class Jogo {
 
         // transforma o array de cartas em um array de inteiros e soma
         int s = subset.stream().mapToInt(Carta::getInt).sum();
+
         ArrayList<ArrayList<Carta>> result = new ArrayList<ArrayList<Carta>>();
 
         // adicionar ao resultado se a soma for igual ao valor passado
