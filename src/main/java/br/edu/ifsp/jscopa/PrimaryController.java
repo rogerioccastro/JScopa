@@ -1,6 +1,7 @@
 package br.edu.ifsp.jscopa;
 
 import java.io.IOException;
+
 import javafx.fxml.FXML;
 
 public class PrimaryController {
@@ -12,5 +13,10 @@ public class PrimaryController {
         jogo.testeSubset();
 
         App.setRoot("secondary");
+    }
+    @FXML
+    private void howToPlayButton() throws IOException {
+
+        App.setRoot("howtoplay");
     }
 }
