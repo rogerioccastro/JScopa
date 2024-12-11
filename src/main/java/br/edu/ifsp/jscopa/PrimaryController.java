@@ -9,8 +9,7 @@ public class PrimaryController {
     @FXML
     private void start() throws IOException {
 
-        Jogo jogo = new Jogo();
-        jogo.testeSubset();
+        App.jogo.testeSubset();
 
         App.setRoot("secondary");
     }

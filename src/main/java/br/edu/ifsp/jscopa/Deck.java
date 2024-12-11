@@ -7,6 +7,10 @@ public class Deck {
     private Carta[] cartas;
     private int qtdCartasDeck;
 
+    public int getQtdCartas(){
+        return this.qtdCartasDeck;
+    }
+
     public Deck() {
 
         cartas = new Carta[40];

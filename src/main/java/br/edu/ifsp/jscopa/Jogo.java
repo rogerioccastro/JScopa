@@ -7,7 +7,7 @@ public class Jogo {
 
     private boolean vezDoPlayer;
 
-    private Deck deck;
+    public static Deck deck;
     private Jogador jogador1;
     private Jogador jogador2;
 
