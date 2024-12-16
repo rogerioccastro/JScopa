@@ -2,14 +2,14 @@ package br.edu.ifsp.jscopa;
 
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 
 public class SecondaryController {
 
@@ -22,7 +22,11 @@ public class SecondaryController {
     @FXML
     HBox bot;
 
-    @FXML VBox vbox;
+    @FXML 
+    VBox vbox;
+
+    @FXML
+    Label pointsLabel;
 
     @FXML
     private void switchToPrimary() throws IOException {
@@ -63,8 +67,7 @@ public class SecondaryController {
                 } else {
                     App.jogo.jogar(cartaSelecionada, new ArrayList<Carta>(), App.jogo.jogador1);
                 }
-
-
+                
                 draw();
                 App.jogo.jogador2.jogar();
                 try {
@@ -93,4 +96,12 @@ public class SecondaryController {
         });
 
     }
+/* 
+    @FXML
+    protected void updatePoints() {
+        System.out.println("ptsupdt com sucesso");
+        Platform.runLater(() -> pointsLabel.setText("Pontos: " + App.jogo.updatePontosPlayer1()));
+    }
+*/
+
 }

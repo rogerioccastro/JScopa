@@ -148,6 +148,12 @@ public class Jogo {
         return this.mesa;
     }
 
+    public int updatePontosPlayer1(){
+
+        return this.pontos1;
+
+    }
+
     public void adicionarAMesa (Carta carta){
         this.mesa.add(carta);
     }
