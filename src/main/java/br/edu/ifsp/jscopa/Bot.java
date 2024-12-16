@@ -99,8 +99,8 @@ class Bot extends Jogador {
         melhorCarta = possibilidades.get(0).get(possibilidades.get(0).size()-1);
 
 
-        System.out.println("melhorCarta");
-        System.out.println(Carta.toString(melhorCarta));
+        // System.out.println("melhorCarta");
+        // System.out.println(Carta.toString(melhorCarta));
 
         System.out.println("melhorPossibilidade");
         melhorPossibilidade.forEach(c -> {
