@@ -11,14 +11,6 @@
 
 <VBox alignment="CENTER" prefHeight="788.0" prefWidth="983.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.jscopa.SecondaryController">
     <children>
-      <ImageView fitHeight="742.0" fitWidth="998.0">
-         <image>
-            <Image url="@../../../../../../../../../Desktop/istockphoto-1441015286-612x612.jpg" />
-         </image>
-         <effect>
-            <InnerShadow />
-         </effect>
-      </ImageView>
         <Label text="Secondary View" />
         <Button fx:id="secondaryButton" onAction="#switchToPrimary" prefHeight="25.0" prefWidth="95.0" text="Switch to Primary View" />
     </children>
