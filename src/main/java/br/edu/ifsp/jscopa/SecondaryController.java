@@ -1,5 +1,6 @@
 package br.edu.ifsp.jscopa;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,20 +29,21 @@ public class SecondaryController {
         App.setRoot("primary");
     }
 
-    private void draw() {
-        App.jogo.jogador2.getMao().forEach( carta -> {
+    public void draw() {
 
+        bot.getChildren().clear();
+        mesa.getChildren().clear();
+        deck.getChildren().clear();
+
+        App.jogo.jogador2.getMao().forEach( carta -> {
             ImageView imageView = new ImageView(String.valueOf(App.class.getResource("cartas/card-back1.png")));
-            if (!bot.getChildren().contains(imageView)){
-                bot.getChildren().add(imageView);
-            }
+            bot.getChildren().add(imageView);
         });
 
         for (Carta c : App.jogo.getMesa())
         {
 
             ImageView imageView = new ImageView(String.valueOf(App.class.getResource("cartas/" + Carta.toString(c) + ".png")));
-            if (!mesa.getChildren().contains(imageView));
             mesa.getChildren().add(imageView);
         }
 
@@ -56,15 +58,18 @@ public class SecondaryController {
                 Carta cartaSelecionada = new Carta(nome);
                 possiveisJogadas = App.jogo.listarPossiveisJogadas(cartaSelecionada);
 
-                if (possiveisJogadas.size() != 0) {
-                    // TODO: jogar
+                if(possiveisJogadas.size() != 0){
+                    App.jogo.jogar(cartaSelecionada, possiveisJogadas.get(0), App.jogo.jogador1);
                 } else {
-                    App.jogo.adicionarAMesa(cartaSelecionada);
+                    App.jogo.jogar(cartaSelecionada, new ArrayList<Carta>(), App.jogo.jogador1);
                 }
+
+
+                draw();
+                App.jogo.jogador2.jogar();
                 draw();
             });
-            if (!mesa.getChildren().contains(imageView));
-            mesa.getChildren().add(imageView);
+            deck.getChildren().add(imageView);
         }
     }
 

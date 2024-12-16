@@ -8,11 +8,11 @@ public class Jogador {
     private ArrayList<Carta> mao;
     private Stack<Carta> deck;
 
-    private int qtdOuros;
-    private int qtdDeSetes;
-    private int qtdEscopas;
-    private boolean belo;
-    private int[] primeira;
+    private int qtdOuros = 0;
+    private int qtdDeSetes = 0;
+    private int qtdEscopas = 0;
+    private boolean belo = false;
+    private int[] primeira = {0,0,0,0};
 
     public int getQtdOuros(){ return qtdOuros; }
     public int getQtdDeSetes(){ return qtdDeSetes; }
@@ -48,7 +48,7 @@ public class Jogador {
     }
 
     public void jogarCarta(Carta carta) {
-        mao.remove(carta);
+        mao.removeIf(c -> Carta.toString(carta).equals(Carta.toString(c)));
     }
 
     public void adicionarNoDeck(ArrayList<Carta> cartas, boolean escopa) {

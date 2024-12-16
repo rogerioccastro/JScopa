@@ -9,7 +9,7 @@ public class Jogo {
 
     public static Deck deck;
     Jogador jogador1;
-    Jogador jogador2;
+    Bot jogador2;
 
     private int pontos1;
     private int pontos2;
@@ -22,7 +22,7 @@ public class Jogo {
         deck.embaralhar();
         vezDoPlayer = true; // faz o jogador comecar contra a máquina
         this.jogador1 = new Jogador();
-        this.jogador2 = new Jogador();
+        this.jogador2 = new Bot();
 
         mesa = new ArrayList<Carta>();
 
@@ -66,12 +66,13 @@ public class Jogo {
     }
 
     public void start(Jogo jogo) {
-        /*
-         * TODO:
-         * Modulo do jogo em si.
-         * 
-         * 
-         */
+        while(true) {
+            SecondaryController.draw();
+
+            if (!vezDoPlayer) {
+                jogador2.jogar();
+            }
+        }
     }
 
     private void computarPontos(Jogador jogador1, Jogador jogador2) {
@@ -110,11 +111,33 @@ public class Jogo {
         this.pontos2 = pontos2;
     }
 
+    public void jogar(Carta cartaSelecionada, ArrayList<Carta> cartasDaMesa, Jogador jogador){
+
+        if (cartasDaMesa.size() == 0) {
+            adicionarAMesa(cartaSelecionada);
+            jogador.jogarCarta(cartaSelecionada);
+
+            jogador.getMao().forEach(c -> {
+                System.out.println(Carta.toString(c));
+            });
+            return;
+        } 
+
+        cartasDaMesa.add(cartaSelecionada);
+        jogador.adicionarNoDeck(cartasDaMesa, false);
+        cartasDaMesa.forEach(c -> {
+            mesa.removeIf(ca -> Carta.toString(ca).equals(Carta.toString(c)));
+        });
+        jogador.jogarCarta(cartaSelecionada);
+
+        vezDoPlayer = !vezDoPlayer;
+    }
+
     ArrayList<Carta> getMesa(){
         return this.mesa;
     }
 
-    void adicionarAMesa (Carta carta){
+    public void adicionarAMesa (Carta carta){
         this.mesa.add(carta);
     }
 }
