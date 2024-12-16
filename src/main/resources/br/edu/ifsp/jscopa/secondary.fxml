@@ -10,15 +10,20 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="788.0" prefWidth="983.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.jscopa.SecondaryController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.jscopa.SecondaryController">
     <children>
-        <Label text="Secondary View" />
-        <Button fx:id="secondaryButton" onAction="#switchToPrimary" prefHeight="25.0" prefWidth="95.0" text="Switch to Primary View" />
-        <HBox fx:id="deck"></HBox>
+        <VBox fx:id="vbox" prefHeight="788.0">
+            <HBox spacing="5" alignment="CENTER" fx:id="bot"></HBox>
+
+            <HBox spacing="5" alignment="CENTER" fx:id="mesa"></HBox>
+
+            <HBox spacing="5" alignment="CENTER" fx:id="deck"></HBox>
+
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+        </VBox>
     </children>
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
     <cursor>
         <Cursor fx:constant="DEFAULT" />
     </cursor>

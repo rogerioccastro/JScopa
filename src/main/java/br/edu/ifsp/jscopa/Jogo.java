@@ -8,8 +8,8 @@ public class Jogo {
     private boolean vezDoPlayer;
 
     public static Deck deck;
-    private Jogador jogador1;
-    private Jogador jogador2;
+    Jogador jogador1;
+    Jogador jogador2;
 
     private int pontos1;
     private int pontos2;
@@ -28,9 +28,13 @@ public class Jogo {
 
         ArrayList<Carta> mao1 = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(3)));
         ArrayList<Carta> mao2 = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(3)));
-        this.mesa = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(3)));
+        this.mesa = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(4)));
         mao1.forEach(carta -> {
             jogador1.comprarCarta(carta);
+        });
+
+        mao2.forEach(carta -> {
+            jogador2.comprarCarta(carta);
         });
 
         mesa.forEach(carta -> {
@@ -110,4 +114,7 @@ public class Jogo {
         return this.mesa;
     }
 
+    void adicionarAMesa (Carta carta){
+        this.mesa.add(carta);
+    }
 }

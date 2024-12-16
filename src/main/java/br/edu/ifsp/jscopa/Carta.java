@@ -80,6 +80,70 @@ public class Carta {
 
     }
 
+    public Carta(final String carta) {
+        String[] split = carta.split("_");
+
+        switch(split[0]) {
+            case "COPAS":
+                this.naipe = Naipe.COPAS;
+                break;
+
+            case "PAUS":
+                this.naipe = Naipe.PAUS;
+                break;
+
+            case "OUROS":
+                this.naipe = Naipe.OUROS;
+                break;
+
+            case "ESPADAS":
+                this.naipe = Naipe.ESPADAS;
+                break;
+
+            default:
+                this.naipe = Naipe.COPAS;
+                break;
+        }
+
+        switch (split[1]) {
+            case "A":
+                this.numero = Numero.A;
+                break;
+            case "DOIS":
+                this.numero = Numero.DOIS;
+                break;
+            case "TRES":
+                this.numero = Numero.TRES;
+                break;
+            case "QUATRO":
+                this.numero = Numero.QUATRO;
+                break;
+            case "CINCO":
+                this.numero = Numero.CINCO;
+                break;
+            case "SEIS":
+                this.numero = Numero.SEIS;
+                break;
+            case "SETE":
+                this.numero = Numero.SETE;
+                break;
+            case "DAMA":
+                this.numero = Numero.DAMA;
+                break;
+            case "VALETE":
+                this.numero = Numero.VALETE;
+                break;
+            case "REI":
+                this.numero = Numero.REI;
+                break;
+            default:
+                this.numero = Numero.REI;
+                break;
+        }
+
+
+    }
+
     //metodos getters
     public Naipe getNaipe() {
 
