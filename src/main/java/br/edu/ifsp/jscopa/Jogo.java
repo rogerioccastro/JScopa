@@ -67,8 +67,6 @@ public class Jogo {
 
     public void start(Jogo jogo) {
         while(true) {
-            SecondaryController.draw();
-
             if (!vezDoPlayer) {
                 jogador2.jogar();
             }
