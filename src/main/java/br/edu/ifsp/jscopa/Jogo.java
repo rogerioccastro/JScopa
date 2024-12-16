@@ -26,21 +26,12 @@ public class Jogo {
 
         mesa = new ArrayList<Carta>();
 
-        ArrayList<Carta> mao1 = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(3)));
-        ArrayList<Carta> mao2 = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(3)));
+
         this.mesa = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(4)));
-        mao1.forEach(carta -> {
-            jogador1.comprarCarta(carta);
-        });
-
-        mao2.forEach(carta -> {
-            jogador2.comprarCarta(carta);
-        });
-
         mesa.forEach(carta -> {
             System.out.print(Carta.toString(carta) + " ");
         });
-
+        tirarCartas();
     }
 
     public void testeSubset() {
@@ -73,7 +64,7 @@ public class Jogo {
         }
     }
 
-    private void computarPontos(Jogador jogador1, Jogador jogador2) {
+    public void computarPontos() {
         int pontos1 = 0;
         int pontos2 = 0;
 
@@ -102,11 +93,18 @@ public class Jogo {
         }
 
         if(jogador1.getQtdDeSetes() == 4) {
+            pontos1 =+ 4;
+        }
 
+        if(jogador2.getQtdDeSetes() == 4) {
+            pontos2 =+ 4;
         }
 
         this.pontos1 = pontos1;
         this.pontos2 = pontos2;
+
+        System.out.println(pontos1);
+        System.out.println(pontos2);
     }
 
     public void jogar(Carta cartaSelecionada, ArrayList<Carta> cartasDaMesa, Jogador jogador){
@@ -127,8 +125,23 @@ public class Jogo {
             mesa.removeIf(ca -> Carta.toString(ca).equals(Carta.toString(c)));
         });
         jogador.jogarCarta(cartaSelecionada);
+    }
 
-        vezDoPlayer = !vezDoPlayer;
+    public void tirarCartas(){
+        if (deck.getQtdCartas() == 0){
+            computarPontos();
+            return;
+        }
+
+        ArrayList<Carta> mao1 = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(3)));
+        ArrayList<Carta> mao2 = new ArrayList<Carta>(Arrays.asList(deck.comprarCartas(3)));
+        mao1.forEach(carta -> {
+            jogador1.comprarCarta(carta);
+        });
+
+        mao2.forEach(carta -> {
+            jogador2.comprarCarta(carta);
+        });
     }
 
     ArrayList<Carta> getMesa(){

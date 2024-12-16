@@ -67,6 +67,11 @@ public class SecondaryController {
 
                 draw();
                 App.jogo.jogador2.jogar();
+                try {
+                if (App.jogo.jogador2.getMao().size() == 0) App.jogo.tirarCartas();
+                } catch(Error e){
+                    App.jogo.computarPontos();
+                }
                 draw();
             });
             deck.getChildren().add(imageView);

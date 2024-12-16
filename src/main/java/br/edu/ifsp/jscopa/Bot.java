@@ -26,11 +26,7 @@ class Bot extends Jogador {
     }
 
     public void jogar() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
+        this.melhorCarta = getMao().get(0);
 
         ArrayList<Carta> mesa = App.jogo.getMesa();
 
@@ -45,8 +41,17 @@ class Bot extends Jogador {
             });
         });
 
+        System.out.println("possibilidades:");
+        possibilidades.forEach(poss -> {
+            poss.forEach(c -> {
+                System.out.println(Carta.toString(c));
+            }); 
+            System.out.println("\n");
+        });
+
         if (possibilidades.size() == 0) {
             App.jogo.jogar(this.getMao().get(0), new ArrayList<Carta>(), App.jogo.jogador2);
+            return;
         }
 
         possibilidades.forEach(possibilidade -> {
@@ -86,11 +91,23 @@ class Bot extends Jogador {
             if (melhorScore < score) {
                 melhorScore = score;
                 melhorCarta = possibilidade.get(possibilidade.size()-1);
-                melhorPossibilidade = possibilidade;
+                melhorPossibilidade = new ArrayList<Carta>(possibilidade);
             }
         });
 
-        App.jogo.jogar(melhorCarta, melhorPossibilidade, App.jogo.jogador2);
+        melhorPossibilidade = possibilidades.get(0);
+        melhorCarta = possibilidades.get(0).get(possibilidades.get(0).size()-1);
 
+
+        System.out.println("melhorCarta");
+        System.out.println(Carta.toString(melhorCarta));
+
+        System.out.println("melhorPossibilidade");
+        melhorPossibilidade.forEach(c -> {
+            System.out.println(Carta.toString(c));
+        }); 
+
+ 
+        App.jogo.jogar(melhorCarta, melhorPossibilidade, App.jogo.jogador2);
     }
 }
